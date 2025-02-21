@@ -4,8 +4,7 @@ FROM golang:alpine as builder
 ENV GO111MODULE=on \
     CGO_ENABLED=0 \
     GOOS=linux \
-    GOARCH=amd64 \
-    PIP_ROOT_USER_ACTION=ignore
+    GOARCH=amd64
 
 # Move to working directory /build
 WORKDIR /build
@@ -21,6 +20,7 @@ RUN go build -o main
 FROM cytopia/ansible:2.13 as production
 #FROM cytopia/ansible:latest as production
 
+ENV PIP_ROOT_USER_ACTION=ignore
 RUN apk add py3-pip
 RUN apk add mysql-client
 RUN pip3 install --user boto3 botocore PyMySQL
