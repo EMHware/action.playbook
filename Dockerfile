@@ -17,13 +17,14 @@ RUN go mod download
 # Build the application
 RUN go build -o main
 
-FROM cytopia/ansible:2.13 as production
-#FROM cytopia/ansible:latest as production
+#FROM cytopia/ansible:2.13 as production
+FROM cytopia/ansible:latest as production
 
 ENV PIP_ROOT_USER_ACTION=ignore
 RUN apk add py3-pip
 RUN apk add mysql-client
-RUN pip3 install --user boto3 botocore PyMySQL
+RUN pip3 install boto3 botocore PyMySQL
+RUN which python3
 
 # Copy binary from build to main folder
 COPY --from=builder /build/main /usr/local/bin
