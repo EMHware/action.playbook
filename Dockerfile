@@ -21,8 +21,7 @@ RUN go build -o main
 FROM cytopia/ansible:latest as production
 
 ENV PIP_ROOT_USER_ACTION=ignore
-RUN apk add py3-pip
-RUN apk add mysql-client
+RUN apk add py3-pip mysql-client openssh
 RUN pip3 install boto3 botocore PyMySQL
 
 # Copy binary from build to main folder
