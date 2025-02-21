@@ -27,7 +27,7 @@ RUN pip3 install boto3 botocore PyMySQL
 
 # Copy binary from build to main folder
 COPY --from=builder /build/main /usr/local/bin
-
+RUN which ssh
 # Run as root
 USER root
 
