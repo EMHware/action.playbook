@@ -18,9 +18,9 @@ on:
         description: Host(s)/Group(s) to target
         required: true
       extra_vars:
-        type: object
-        default: {}
-        description: Map of Extra Ansible playbook variables
+        type: string
+        default: '{}'
+        description: Json string of additional variables for the Ansible playbook
 
 jobs:
   status_check:
@@ -35,5 +35,5 @@ jobs:
           playbook: ${{ inputs.playbook }}
           inventory: ${{ inputs.inventory }}
           limit: ${{ inputs.limit }}
-          extra_vars: ${{ toJson(inputs.extra_vars) }}
+          extra_vars: ${{ inputs.extra_vars }}
 
