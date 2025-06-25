@@ -1,0 +1,39 @@
+name: Ansible Action
+
+on:
+  workflow_call:
+    inputs:
+      galaxy_file:
+        required: true
+        type: string
+      playbook:
+        required: true
+        type: string
+      inventory:
+        required: true
+        type: string
+      limit:
+        type: string
+        default: training
+        description: Host(s)/Group(s) to target
+        required: true
+      extra_vars:
+        type: object
+        default: {}
+        description: Map of Extra Ansible playbook variables
+
+jobs:
+  status_check:
+    runs-on: ${{ vars.INFRA_RUNNER }}
+    environment: Prod
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ansible Action
+        uses: EMHware/action.ansible@master
+        with:
+          galaxy_file: ${{ inputs.galaxy_file }}
+          playbook: ${{ inputs.playbook }}
+          inventory: ${{ inputs.inventory }}
+          limit: ${{ inputs.limit }}
+          extra_vars: ${{ toJson(inputs.extra_vars) }}
+
