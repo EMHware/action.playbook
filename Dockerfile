@@ -21,7 +21,7 @@ FROM cytopia/ansible:2.13 as production
 #FROM cytopia/ansible:latest as production
 
 ENV PIP_ROOT_USER_ACTION=ignore
-RUN apk add py3-pip mysql-client
+RUN apk add py3-pip mysql-client bash
 RUN pip3 install boto3 botocore PyMySQL
 
 # Copy binary from build to main folder
