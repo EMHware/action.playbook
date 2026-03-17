@@ -17,8 +17,9 @@ RUN go mod download
 # Build the application
 RUN go build -o main
 
-FROM cytopia/ansible:2.13 as production
+#FROM cytopia/ansible:2.13 as production
 #FROM cytopia/ansible:latest as production
+FROM cytopia/ansible:2.13@sha256:320b7e60b980f4633da5a066772f9e7f92204bd8b1217ce5a5075ba17869b70a as production
 
 ENV PIP_ROOT_USER_ACTION=ignore
 RUN apk add py3-pip mysql-client
