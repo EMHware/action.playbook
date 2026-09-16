@@ -99,7 +99,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://033452977163.dkr.ecr.ca-central-1.amazonaws.com/devops/action-playbook:0.1.0'
 branding:
   icon: 'play-circle'
   color: 'black'

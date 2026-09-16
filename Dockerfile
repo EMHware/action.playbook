@@ -27,9 +27,13 @@ RUN pip3 install boto3 botocore PyMySQL
 
 # Copy binary from build to main folder
 COPY --from=builder /build/main /usr/local/bin
+COPY requirements.yml /tmp/requirements.yml
 
 # Run as root
 USER root
+
+RUN ansible-galaxy collection install -r /tmp/requirements.yml -p /root/.ansible/collections \
+    && rm /tmp/requirements.yml
 
 # Command to run when starting the container
 CMD ["main"]
