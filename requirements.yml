@@ -1,12 +1,12 @@
 ---
 collections:
-  - name: https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/amazon-aws-7.2.0.tar.gz
-    type: url
-  - name: https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/ansible-posix-1.5.4.tar.gz
-    type: url
-  - name: https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-general-8.6.8.tar.gz
-    type: url
-  - name: https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-aws-7.2.0.tar.gz
-    type: url
-  - name: https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-mysql-3.10.3.tar.gz
-    type: url
+  - name: amazon.aws
+    version: 7.2.0
+  - name: ansible.posix
+    version: 1.5.4
+  - name: community.general
+    version: 8.6.8
+  - name: community.aws
+    version: 7.2.0
+  - name: community.mysql
+    version: 3.10.3
